@@ -1,8 +1,8 @@
 //SPDX-License-Identifier: MIT
-pragma solidity 0.8.20;
+pragma solidity 0.8.9;
 
 import "@api3/airnode-protocol/contracts/rrp/requesters/RrpRequesterV0.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts@4.9.0/access/Ownable.sol";
 import "@api3/contracts/v0.8/interfaces/IProxy.sol";
 
 
@@ -32,7 +32,7 @@ contract Youtube is RrpRequesterV0, Ownable {
     
     Bet[] public bets;
 
-    constructor(address _rrpAddress) RrpRequesterV0(_rrpAddress) Ownable(msg.sender) {}
+    constructor(address _rrpAddress) RrpRequesterV0(_rrpAddress) {}
 
     // Set our price feed 
     function setProxyAddress(address _proxyAddress) public onlyOwner {
