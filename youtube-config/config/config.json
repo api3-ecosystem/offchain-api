@@ -1,0 +1,242 @@
+{
+  "apiCredentials": [
+    {
+      "oisTitle": "YouTubeAPI",
+      "securitySchemeName": "YouTubeAPISecurityScheme1ApiKey",
+      "securitySchemeValue": "${YOUTUBEAPI_SECURITY_SCHEME_1_API_KEY_VALUE}"
+    }
+  ],
+  "chains": [
+    {
+      "authorizations": {
+        "requesterEndpointAuthorizations": {}
+      },
+      "authorizers": {
+        "crossChainRequesterAuthorizers": [],
+        "crossChainRequesterAuthorizersWithErc721": [],
+        "requesterAuthorizersWithErc721": [],
+        "requesterEndpointAuthorizers": []
+      },
+      "blockHistoryLimit": 60,
+      "contracts": {
+        "AirnodeRrp": "0xa0AD79D995DdeeB18a14eAef56A549A04e3Aa1Bd"
+      },
+      "id": "5",
+      "maxConcurrency": 50,
+      "minConfirmations": 0,
+      "options": {
+        "fulfillmentGasLimit": 500000,
+        "gasPriceOracle": [
+          {
+            "gasPriceStrategy": "providerRecommendedGasPrice",
+            "recommendedGasPriceMultiplier": 1.2
+          },
+          {
+            "gasPrice": {
+              "unit": "gwei",
+              "value": 10
+            },
+            "gasPriceStrategy": "constantGasPrice"
+          }
+        ],
+        "withdrawalRemainder": {
+          "unit": "wei",
+          "value": 0
+        }
+      },
+      "providers": {
+        "goerliPublic": {
+          "url": "https://goerli.reblok.io/public"
+        }
+      },
+      "type": "evm"
+    },
+    {
+      "authorizations": {
+        "requesterEndpointAuthorizations": {}
+      },
+      "authorizers": {
+        "crossChainRequesterAuthorizers": [],
+        "crossChainRequesterAuthorizersWithErc721": [],
+        "requesterAuthorizersWithErc721": [],
+        "requesterEndpointAuthorizers": []
+      },
+      "blockHistoryLimit": 250,
+      "contracts": {
+        "AirnodeRrp": "0xa0AD79D995DdeeB18a14eAef56A549A04e3Aa1Bd"
+      },
+      "id": "421613",
+      "maxConcurrency": 50,
+      "minConfirmations": 0,
+      "options": {
+        "fulfillmentGasLimit": 2000000,
+        "gasPriceOracle": [
+          {
+            "gasPriceStrategy": "providerRecommendedGasPrice",
+            "recommendedGasPriceMultiplier": 1.2
+          },
+          {
+            "gasPrice": {
+              "unit": "gwei",
+              "value": 10
+            },
+            "gasPriceStrategy": "constantGasPrice"
+          }
+        ],
+        "withdrawalRemainder": {
+          "unit": "wei",
+          "value": 0
+        }
+      },
+      "providers": {
+        "arbitrumGoerliPublic": {
+          "url": "https://goerli-rollup.arbitrum.io/rpc"
+        },
+        "arbitrumGoerliTestnet1": {
+          "url": "${ARBITRUM_GOERLI_TESTNET_1_PROVIDER_URL}"
+        }
+      },
+      "type": "evm"
+    }
+  ],
+  "nodeSettings": {
+    "airnodeWalletMnemonic": "${AIRNODE_WALLET_MNEMONIC}",
+    "cloudProvider": {
+      "disableConcurrencyReservations": true,
+      "region": "us-east-1",
+      "type": "aws"
+    },
+    "heartbeat": {
+      "apiKey": "${HEARTBEAT_API_KEY}",
+      "enabled": true,
+      "url": "${HEARTBEAT_URL}"
+    },
+    "httpGateway": {
+      "corsOrigins": [],
+      "enabled": true,
+      "maxConcurrency": 20
+    },
+    "httpSignedDataGateway": {
+      "corsOrigins": [],
+      "enabled": true,
+      "maxConcurrency": 20
+    },
+    "logFormat": "plain",
+    "logLevel": "INFO",
+    "nodeVersion": "0.12.0",
+    "oevGateway": {
+      "corsOrigins": [],
+      "enabled": true,
+      "maxConcurrency": 20
+    },
+    "stage": "cyan-lynx"
+  },
+  "ois": [
+    {
+      "apiSpecifications": {
+        "components": {
+          "securitySchemes": {
+            "YouTubeAPISecurityScheme1ApiKey": {
+              "in": "query",
+              "name": "key",
+              "type": "apiKey"
+            }
+          }
+        },
+        "paths": {
+          "/videos": {
+            "get": {
+              "parameters": [
+                {
+                  "in": "query",
+                  "name": "id"
+                },
+                {
+                  "in": "query",
+                  "name": "part"
+                }
+              ]
+            }
+          }
+        },
+        "security": {
+          "YouTubeAPISecurityScheme1ApiKey": []
+        },
+        "servers": [
+          {
+            "url": "https://www.googleapis.com/youtube/v3"
+          }
+        ]
+      },
+      "endpoints": [
+        {
+          "fixedOperationParameters": [],
+          "name": "/videos",
+          "operation": {
+            "method": "get",
+            "path": "/videos"
+          },
+          "parameters": [
+            {
+              "name": "id",
+              "operationParameter": {
+                "in": "query",
+                "name": "id"
+              },
+              "required": false
+            },
+            {
+              "name": "part",
+              "operationParameter": {
+                "in": "query",
+                "name": "part"
+              },
+              "required": false
+            }
+          ],
+          "postProcessingSpecifications": [],
+          "preProcessingSpecifications": [],
+          "reservedParameters": [
+            {
+              "name": "_type"
+            },
+            {
+              "name": "_path"
+            },
+            {
+              "name": "_times"
+            }
+          ]
+        }
+      ],
+      "oisFormat": "2.1.0",
+      "title": "YouTubeAPI",
+      "version": "0.1.1"
+    }
+  ],
+  "templates": [],
+  "triggers": {
+    "http": [
+      {
+        "endpointId": "0x7ed72030f2d9bb70900c3953bced0858d1fcead9c5e4b2b31c6c781d85ffb729",
+        "endpointName": "/videos",
+        "oisTitle": "YouTubeAPI"
+      }
+    ],
+    "httpSignedData": [
+      {
+        "endpointId": "0x7ed72030f2d9bb70900c3953bced0858d1fcead9c5e4b2b31c6c781d85ffb729",
+        "endpointName": "/videos",
+        "oisTitle": "YouTubeAPI"
+      }
+    ],
+    "rrp": [
+      {
+        "cacheResponses": false,
+        "endpointId": "0x7ed72030f2d9bb70900c3953bced0858d1fcead9c5e4b2b31c6c781d85ffb729",
+        "endpointName": "/videos",
+        "oisTitle": "YouTubeAPI"
+      }
+    ]
+  }
+}
