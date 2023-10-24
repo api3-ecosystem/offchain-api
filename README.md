@@ -37,30 +37,24 @@ npm install
 #### Windows
 ```
 docker run -it --rm ^
-      --env-file aws.env ^
-      -v "%cd%/config:/app/config" ^
-      -v "%cd%/output:/app/output" ^
-      api3/airnode-deployer:0.7.3 deploy
+      -v "%cd%:/app/config" ^
+      api3/airnode-deployer:0.12.0 deploy
 ```
 
 #### OSX
 ```
 docker run -it --rm \
-      --env-file aws.env \
       -e USER_ID=$(id -u) -e GROUP_ID=$(id -g) \
-      -v "$(pwd)/config:/app/config" \
-      -v "$(pwd)/output:/app/output" \
-      api3/airnode-deployer:0.7.3 deploy
+      -v "$(pwd):/app/config" \
+      api3/airnode-deployer:0.12.0 deploy
 ```
 
 #### Linux
 ```
 docker run -it --rm \
-      --env-file aws.env \
       -e USER_ID=$(id -u) -e GROUP_ID=$(id -g) \
-      -v "$(pwd)/config:/app/config" \
-      -v "$(pwd)/output:/app/output" \
-      api3/airnode-deployer:0.7.3 deploy
+      -v "$(pwd):/app/config" \
+      api3/airnode-deployer:0.12.0 deploy
 ```
 
 # Part 2 - Coding the Requester Contract and calling the Airnode
